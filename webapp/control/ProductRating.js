@@ -1,32 +1,27 @@
-sap.ui.define([
-	"sap/ui/core/Control",
-	"sap/m/RatingIndicator",
-	"sap/m/Label",
-	"sap/m/Button"
-], function (Control, RatingIndicator, Label, Button) {
+sap.ui.define(["sap/ui/core/Control", "sap/m/RatingIndicator", "sap/m/Label", "sap/m/Button"], function (Control, RatingIndicator, Label, Button) {
 	"use strict";
 
 	return Control.extend("sap.ui.demo.wt.control.ProductRating", {
 
 		metadata: {
 			properties: {
-				value: {type: "float", defaultValue: 0}
+				value: { type: "float", defaultValue: 0 }
 			},
 			aggregations: {
-				_rating: {type: "sap.m.RatingIndicator", multiple: false, visibility: "hidden"},
-				_label: {type: "sap.m.Label", multiple: false, visibility: "hidden"},
-				_button: {type: "sap.m.Button", multiple: false, visibility: "hidden"}
+				_rating: { type: "sap.m.RatingIndicator", multiple: false, visibility: "hidden" },
+				_label: { type: "sap.m.Label", multiple: false, visibility: "hidden" },
+				_button: { type: "sap.m.Button", multiple: false, visibility: "hidden" }
 			},
 			events: {
 				change: {
 					parameters: {
-						value: {type: "int"}
+						value: { type: "int" }
 					}
 				}
 			}
 		},
 
-		init: function () {
+		init: function init() {
 			this.setAggregation("_rating", new RatingIndicator({
 				value: this.getValue(),
 				iconSize: "2rem",
@@ -42,12 +37,12 @@ sap.ui.define([
 			}));
 		},
 
-		setValue: function (iValue) {
+		setValue: function setValue(iValue) {
 			this.setProperty("value", iValue, true);
 			this.getAggregation("_rating").setValue(iValue);
 		},
 
-		_onRate: function (oEvent) {
+		_onRate: function _onRate(oEvent) {
 			var oRessourceBundle = this.getModel("i18n").getResourceBundle();
 			var fValue = oEvent.getParameter("value");
 
@@ -57,7 +52,7 @@ sap.ui.define([
 			this.getAggregation("_label").setDesign("Bold");
 		},
 
-		_onSubmit: function (oEvent) {
+		_onSubmit: function _onSubmit(oEvent) {
 			var oResourceBundle = this.getModel("i18n").getResourceBundle();
 
 			this.getAggregation("_rating").setEnabled(false);
@@ -68,7 +63,7 @@ sap.ui.define([
 			});
 		},
 
-		renderer: function (oRM, oControl) {
+		renderer: function renderer(oRM, oControl) {
 			oRM.write("<div");
 			oRM.writeControlData(oControl);
 			oRM.addClass("myAppDemoWTProductRating");
@@ -80,5 +75,4 @@ sap.ui.define([
 			oRM.write("</div>");
 		}
 	});
-
 });

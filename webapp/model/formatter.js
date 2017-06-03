@@ -3,7 +3,7 @@ sap.ui.define([], function () {
 
 	return {
 
-		statusText: function (sStatus) {
+		statusText: function statusText(sStatus) {
 			var oResourceBundle = this.getView().getModel("i18n").getResourceBundle();
 
 			switch (sStatus) {

@@ -1,11 +1,9 @@
-sap.ui.define([
-	"sap/ui/core/util/MockServer"
-], function (MockServer) {
+sap.ui.define(["sap/ui/core/util/MockServer"], function (MockServer) {
 	"use strict";
 
 	return {
 
-		init: function () {
+		init: function init() {
 
 			// create
 			var oMockServer = new MockServer({
@@ -28,5 +26,4 @@ sap.ui.define([
 			oMockServer.start();
 		}
 	};
-
 });

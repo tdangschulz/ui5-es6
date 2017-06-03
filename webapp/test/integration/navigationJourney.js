@@ -1,9 +1,7 @@
 /*global QUnit*/
 /*global opaTest*/
 
-sap.ui.require([
-	"sap/ui/test/opaQunit"
-], function () {
+sap.ui.require(["sap/ui/test/opaQunit"], function () {
 	"use strict";
 
 	QUnit.module("Navigation");
@@ -17,8 +15,6 @@ sap.ui.require([
 		When.onTheAppPage.iPressTheSayHelloWithDialogButton();
 
 		// Assertions
-		Then.onTheAppPage.iShouldSeeTheHelloDialog().
-			and.iTeardownMyAppFrame();
+		Then.onTheAppPage.iShouldSeeTheHelloDialog().and.iTeardownMyAppFrame();
 	});
 });
-

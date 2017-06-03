@@ -1,14 +1,9 @@
-sap.ui.define([
-	"sap/ui/core/mvc/Controller",
-	"sap/ui/core/routing/History",
-	"sap/m/MessageToast",
-	"sap/ui/model/json/JSONModel"
-], function (Controller, History, MessageToast, JSONModel) {
+sap.ui.define(["sap/ui/core/mvc/Controller", "sap/ui/core/routing/History", "sap/m/MessageToast", "sap/ui/model/json/JSONModel"], function (Controller, History, MessageToast, JSONModel) {
 	"use strict";
 
 	return Controller.extend("sap.ui.demo.wt.controller.Detail", {
 
-		onInit: function () {
+		onInit: function onInit() {
 			var oViewModel = new JSONModel({
 				currency: "EUR"
 			});
@@ -18,14 +13,14 @@ sap.ui.define([
 			oRouter.getRoute("detail").attachPatternMatched(this._onObjectMatched, this);
 		},
 
-		_onObjectMatched: function (oEvent) {
+		_onObjectMatched: function _onObjectMatched(oEvent) {
 			this.getView().bindElement({
 				path: "/" + oEvent.getParameter("arguments").invoicePath,
 				model: "invoice"
 			});
 		},
 
-		onNavBack: function () {
+		onNavBack: function onNavBack() {
 			var oHistory = History.getInstance();
 			var sPreviousHash = oHistory.getPreviousHash();
 
@@ -37,7 +32,7 @@ sap.ui.define([
 			}
 		},
 
-		onRatingChange: function (oEvent) {
+		onRatingChange: function onRatingChange(oEvent) {
 			var fValue = oEvent.getParameter("value");
 			var oResourceBundle = this.getView().getModel("i18n").getResourceBundle();
 

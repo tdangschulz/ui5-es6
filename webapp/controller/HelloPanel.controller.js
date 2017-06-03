@@ -1,12 +1,9 @@
-sap.ui.define([
-	"sap/ui/core/mvc/Controller",
-	"sap/m/MessageToast"
-], function (Controller, MessageToast) {
+sap.ui.define(["sap/ui/core/mvc/Controller", "sap/m/MessageToast"], function (Controller, MessageToast) {
 	"use strict";
 
 	return Controller.extend("sap.ui.demo.wt.controller.HelloPanel", {
 
-		onShowHello : function () {
+		onShowHello: function onShowHello() {
 
 			// read msg from i18n model
 			var oBundle = this.getView().getModel("i18n").getResourceBundle();
@@ -17,9 +14,8 @@ sap.ui.define([
 			MessageToast.show(sMsg);
 		},
 
-		onOpenDialog : function () {
+		onOpenDialog: function onOpenDialog() {
 			this.getOwnerComponent().openHelloDialog();
 		}
 	});
-
 });

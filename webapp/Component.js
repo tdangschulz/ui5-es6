@@ -1,9 +1,4 @@
-sap.ui.define([
-	"sap/ui/core/UIComponent",
-	"sap/ui/model/json/JSONModel",
-	"sap/ui/demo/wt/controller/HelloDialog",
-	"sap/ui/Device"
-], function (UIComponent, JSONModel, HelloDialog, Device) {
+sap.ui.define(["sap/ui/core/UIComponent", "sap/ui/model/json/JSONModel", "sap/ui/demo/wt/controller/HelloDialog", "sap/ui/Device"], function (UIComponent, JSONModel, HelloDialog, Device) {
 	"use strict";
 
 	return UIComponent.extend("sap.ui.demo.wt.Component", {
@@ -12,7 +7,7 @@ sap.ui.define([
 			manifest: "json"
 		},
 
-		init: function () {
+		init: function init() {
 
 			// call the init function of the parent
 			UIComponent.prototype.init.apply(this, arguments);
@@ -36,14 +31,13 @@ sap.ui.define([
 
 			// create the views based on the url/hash
 			this.getRouter().initialize();
-
 		},
 
-		openHelloDialog : function () {
+		openHelloDialog: function openHelloDialog() {
 			this._helloDialog.open();
 		},
 
-		getContentDensityClass : function() {
+		getContentDensityClass: function getContentDensityClass() {
 			if (!this._sContentDensityClass) {
 				if (!sap.ui.Device.support.touch) {
 					this._sContentDensityClass = "sapUiSizeCompact";
@@ -55,5 +49,4 @@ sap.ui.define([
 		}
 
 	});
-
 });

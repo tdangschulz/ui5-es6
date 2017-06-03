@@ -1,22 +1,20 @@
-sap.ui.define([
-	"sap/ui/base/Object"
-], function (UI5Object) {
+sap.ui.define(["sap/ui/base/Object"], function (UI5Object) {
 	"use strict";
 
 	return UI5Object.extend("sap.ui.demo.wt.controller.HelloDialog", {
 
-		constructor : function (oView) {
+		constructor: function constructor(oView) {
 			this._oView = oView;
 		},
 
-		open : function () {
+		open: function open() {
 			var oView = this._oView;
 			var oDialog = oView.byId("helloDialog");
 
 			// create dialog lazily
 			if (!oDialog) {
 				var oFragmentController = {
-					onCloseDialog : function () {
+					onCloseDialog: function onCloseDialog() {
 						oDialog.close();
 					}
 				};
@@ -31,5 +29,4 @@ sap.ui.define([
 		}
 
 	});
-
 });

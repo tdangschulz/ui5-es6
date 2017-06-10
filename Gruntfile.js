@@ -14,10 +14,10 @@ module.exports = function (grunt) {
         connect: {
             server: {
                 options: {
-                    port: 8080,
-                    hostname: 'localhost',
+                    port: 80,
+                    hostname: '0.0.0.0',
                     keepalive: true,
-                    open: "http://localhost:8080/webapp/index.html",
+                    //open: "http://localhost:8080/webapp/index.html",
                     middleware: function (connect, options, defaultMiddleware) {
                         var proxy = require('grunt-connect-proxy/lib/utils').proxyRequest;
                         return [

@@ -1,14 +1,20 @@
 module.exports = function (grunt) {
+    require('load-grunt-tasks')(grunt);
+
+    grunt.loadNpmTasks('grunt-contrib-connect');
+    grunt.loadNpmTasks('grunt-connect-proxy');
+
     grunt.initConfig({
         babel: {
-            options: {
-                sourceMap: true,
-                presets: ['es2015']
-            },
             dist: {
-                files: {
-                    'dist/': 'src/'
-                }
+                files: [{
+                    expand: true,
+                    cwd: 'src',
+                    src: ['**/*.es6'],
+                    dest: 'webapp',
+                    ext: '.js'
+                }]
+
             }
         },
         connect: {
@@ -19,7 +25,7 @@ module.exports = function (grunt) {
                     keepalive: true,
                     //open: "http://localhost:8080/webapp/index.html",
                     middleware: function (connect, options, defaultMiddleware) {
-                        var proxy = require('grunt-connect-proxy/lib/utils').proxyRequest;
+                        const proxy = require('grunt-connect-proxy/lib/utils').proxyRequest;
                         return [
                             // Include the proxy first
                             proxy
@@ -54,8 +60,7 @@ module.exports = function (grunt) {
             }
         }
     });
-    grunt.loadNpmTasks('grunt-contrib-connect');
-    grunt.loadNpmTasks('grunt-connect-proxy');
+
 
     grunt.registerTask('server', function () {
         grunt.task.run([
@@ -63,4 +68,6 @@ module.exports = function (grunt) {
             'connect:server'
         ]);
     });
+
+    grunt.registerTask('run-server', ['babel', 'server']);
 };
